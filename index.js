@@ -1,22 +1,31 @@
+require('dotenv').config()
+
 const express = require('express')
 const app = express()
-const http = require('http').createServer(app);
+// const http = require('http').createServer(app);
+const users = []
+const connection = []
 
-const io = require('socket.io')(http)
 
-app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/index.html');
-});
+// mongoose.connect(process.env.MONGODB_URI)
+
+
+
+app.use('/*', (req, res) => res.sendFile(`${__dirname}/index.html`))
+
+
+
+let serve = app.listen(process.env.PORT || 4000, () => console.log(`express is running on port ${process.env.PORT || 4000}`))
+
+// http.listen(4000, function () {
+//     console.log('listening on *:3000');
+// });
+
+
+const io = require('socket.io')(serve)
 
 io.on('connection', function (socket) {
     socket.on('chat message', function (msg) {
         io.emit('chat message', msg);
     });
-});
-
-
-// app.listen(4000, () => console.log('express is running on port 4000'))
-
-http.listen(4000, function () {
-    console.log('listening on *:3000');
 });
