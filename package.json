@@ -1,0 +1,14 @@
+{
+  "name": "chat-box",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Siddant/chat-box.git",
+  "author": "Siddant <siddantgurung@hotmail.co.uk>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index"
+  },
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
