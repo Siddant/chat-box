@@ -3,17 +3,14 @@ require('dotenv').config()
 const express = require('express')
 const app = express()
 // const http = require('http').createServer(app);
-const users = []
-const connection = []
+const mongoose = require('mongoose')
+const bodyParser = require('body-parser')
 
-
-// mongoose.connect(process.env.MONGODB_URI)
+mongoose.connect(process.env.MONGODB_URI)
 
 
 
 app.use('/*', (req, res) => res.sendFile(`${__dirname}/index.html`))
-
-
 
 let serve = app.listen(process.env.PORT || 4000, () => console.log(`express is running on port ${process.env.PORT || 4000}`))
 
