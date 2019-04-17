@@ -9,12 +9,6 @@ const userSchema = new mongoose.Schema({
     email: { type: String, required: 'Email address is required', unique: 'Email address already exist, please enter different Email address' }
 })
 
-//Add project virtual, where projects users match this user
-userSchema.virtual('project', {
-    ref: 'Project',
-    localField: '_id',
-    foreignField: 'user'
-})
 
 //Use plugin to make sure only unique values can be used where required
 userSchema.plugin(uniqueValidator)
