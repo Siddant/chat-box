@@ -2,12 +2,12 @@ const Chatroom = require('../models/chatroom')
 
 function createRoute(req, res) {
     // console.log(req.body)
-    res.status(201).json({ message: req.body.user })
+    // res.status(201).json({ message: req.body.user })
     // res.status(201).json({ message: 'message has been created sucessfully' })
-    // Chatroom
-    // .create(req.body)
-    //     .then(() => res.status(201).json({ message: 'message has been created sucessfully' }))
-    //     .catch(err => res.status(201).json({ errors: err }))
+    Chatroom
+        .create(req.body)
+        .then(() => res.status(201).json({ message: 'message has been created sucessfully' }))
+        .catch(err => res.status(201).json({ errors: err }))
 }
 
 function showRoute(req, res) {
