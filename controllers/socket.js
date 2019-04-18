@@ -5,13 +5,10 @@ const todoController = require('./chatroom')
 // require('socket.io')(server)
 
 function respondRoute(io) {
-    io.on('chat message', function (msg) {
+    io.on('send message', function (msg) {
         // console.log(msg.message)
-        todoController.testing()
-
-        // io.emit('chat message', msg.message);
+        todoController.testing(io, msg)
     });
-
 }
 
 

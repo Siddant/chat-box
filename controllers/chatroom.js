@@ -1,4 +1,5 @@
 const Chatroom = require('../models/chatroom')
+const Dummy = require('../models/dummy')
 
 function createRoute(req, res) {
     Chatroom
@@ -29,8 +30,11 @@ function updateRoute(req, res) {
 }
 
 
-function testing() {
-    console.log('testing')
+function testing(io, msg) {
+    Dummy
+        .create({ text: msg.message })
+        .then(io.emit('recieving message', msg.message))
+        .catch(err => io.emit('recieving message', "error"))
 }
 
 
