@@ -29,6 +29,11 @@ function updateRoute(req, res) {
 }
 
 
+function testing() {
+    console.log('testing')
+}
+
+
 // function indexRoute(req, res) {
 //     Chatroom
 //         .find({ 'user': { $all: req.body.user } })
@@ -43,5 +48,6 @@ function updateRoute(req, res) {
 module.exports = {
     create: createRoute,
     show: showRoute,
-    update: updateRoute
+    update: updateRoute,
+    testing: testing
 }

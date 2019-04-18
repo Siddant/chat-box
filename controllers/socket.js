@@ -1,18 +1,15 @@
-const express = require('express');
-const router = require('express').Router()
+// import todoRoutes from './chatroom';
+// import todoController from './chatroom';
+const todoController = require('./chatroom')
 
+// require('socket.io')(server)
 
 function respondRoute(io) {
     io.on('chat message', function (msg) {
         // console.log(msg.message)
+        todoController.testing()
 
-
-        router.get('/api/hi', (req, res) => {
-            console.log('here')
-        });
-
-
-        io.emit('chat message', msg.message);
+        // io.emit('chat message', msg.message);
     });
 
 }
