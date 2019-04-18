@@ -2,6 +2,7 @@ const router = require('express').Router()
 
 const authController = require('../controllers/auth')
 const chatroomController = require('../controllers/chatroom')
+const socketRoutes = require('../controllers/socket')
 
 
 
@@ -13,6 +14,8 @@ router.post('/login', authController.login)
 router.post('/chatroom', chatroomController.create)
 router.get('/chatroom', chatroomController.show)
 router.put('/chatroom', chatroomController.update)
+
+router.get('/socket', socketRoutes.respond)
 
 router.all('/*', (req, res) => res.sendStatus(404))
 
