@@ -67,11 +67,11 @@
             var socket = io();
             $('form').submit(function (e) {
                 e.preventDefault(); // prevents page reloading
-                socket.emit('send message', { message: $('#m').val(), hi: 'hi' });
+                socket.emit('chat message', { message: $('#m').val(), hi: 'hi' });
                 $('#m').val('');
                 return false;
             });
-            socket.on('recieving message', function (msg) {
+            socket.on('chat message', function (msg) {
                 $('#messages').append($('<li>').text(msg));
             });
         });

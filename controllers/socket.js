@@ -4,11 +4,10 @@ const todoController = require('./chatroom')
 
 // require('socket.io')(server)
 
-function respondRoute(io) {
-    io.on('send message', function (msg) {
-        // console.log(msg.message)
-        todoController.testing(io, msg)
-    });
+function respondRoute(socket) {
+    socket.on('chat message', function (msg) {
+        global.tesio.emit('chat message', msg.message)
+    })
 }
 
 
