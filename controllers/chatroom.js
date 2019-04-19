@@ -30,13 +30,35 @@ function updateRoute(req, res) {
 }
 
 
-function testing(io, msg) {
+function testing(msg) {
+    // console.log(msg.message.text)
+    // console.log(msg)
+
     Dummy
-        .create({ text: msg.message })
-        .then(io.emit('recieving message', msg.message))
-        .catch(err => io.emit('recieving message', "error"))
+
+        .find({ 'user': { $all: msg.user } })
+        .then((messages) => {
+            messages[0].message.push(msg.message)
+            messages[0].save()
+            global.tesio.emit('recieving message', msg.message.text)
+        })
+        .catch(err => global.tesio.emit('recieving message', 'err'))
+
+
+    // .create({ text: msg.message })
+    // .then(io.emit('recieving message', msg.message))
+    // .catch(err => io.emit('recieving message', "error"))
 }
 
+
+
+
+function createTesting(req, res) {
+    Dummy
+        .create(req.body)
+        .then(() => res.status(201).json({ message: 'message has been created sucessfully' }))
+        .catch(err => res.status(201).json({ errors: err }))
+}
 
 // function indexRoute(req, res) {
 //     Chatroom
@@ -53,5 +75,6 @@ module.exports = {
     create: createRoute,
     show: showRoute,
     update: updateRoute,
-    testing: testing
+    testing: testing,
+    createTesting: createTesting
 }

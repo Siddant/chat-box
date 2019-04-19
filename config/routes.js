@@ -15,7 +15,7 @@ router.post('/chatroom', chatroomController.create)
 router.get('/chatroom', chatroomController.show)
 router.put('/chatroom', chatroomController.update)
 
-router.get('/socket', socketRoutes.respond)
+router.post('/testing', chatroomController.createTesting)
 
 router.all('/*', (req, res) => res.sendStatus(404))
 
