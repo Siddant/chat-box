@@ -56,6 +56,7 @@
 <body>
     <ul id="messages"></ul>
     <form action="">
+        <input id="showId" autocomplete="off" />
         <input id="m" autocomplete="off" /><button>Send</button>
     </form>
     <script src="/socket.io/socket.io.js"></script>
@@ -71,14 +72,20 @@
         // 		"text": "hello hill"
         // 	}
         // }
+
+
+        //5cba48fe9dd8fcd91b61c875
+        //5cba455b1eb2afd7687319b1
+
         $(function () {
             var socket = io();
             $('form').submit(function (e) {
                 e.preventDefault(); // prevents page reloading
                 socket.emit('chat message', {
-                    user: ["5cb5174249414f4e9dec2709", "5cb51949c94e70535a38a039"],
+                    user: ["5cb5174249414f4e9dec2709", $('#user').val()],
+                    showId: $('#showId').val(),
                     message: {
-                        user: "5cb51dc4452adb56b8127eeb",
+                        user: $('#user').val(),
                         text: $('#m').val()
                     }
                 });
@@ -86,7 +93,9 @@
                 return false;
             });
             socket.on('recieving message', function (msg) {
-                $('#messages').append($('<li>').text(msg));
+                if (msg.chatId === $('#showId').val()) {
+                    $('#messages').append($('<li>').text(msg.text));
+                }
             });
         });
     </script>

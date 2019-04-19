@@ -9,6 +9,8 @@ function createRoute(req, res) {
 }
 
 function showRoute(req, res) {
+    '5cb51dc4452adb56b8127eeb'
+
     const arr = ["5cb51949c94e70535a38a039", "5cb5174249414f4e9dec2709"]
     Chatroom
         .find({ 'user': { $all: arr } })
@@ -31,12 +33,15 @@ function updateRoute(req, res) {
 
 
 function testing(msg) {
+
+    //5cba455b1eb2afd7687319b1
+    //msg.showId
     Dummy
-        .find({ 'user': { $all: msg.user } })
+        .findById(msg.showId)
         .then((messages) => {
-            messages[0].message.push(msg.message)
-            messages[0].save()
-            global.io.emit('recieving message', msg.message.text)
+            messages.message.push(msg.message)
+            messages.save()
+            global.io.emit('recieving message', { text: msg.message.text, chatId: msg.showId })
         })
         .catch(err => global.io.emit('recieving message', 'err'))
 }
