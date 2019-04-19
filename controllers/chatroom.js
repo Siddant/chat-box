@@ -31,23 +31,14 @@ function updateRoute(req, res) {
 
 
 function testing(msg) {
-    // console.log(msg.message.text)
-    // console.log(msg)
-
     Dummy
-
         .find({ 'user': { $all: msg.user } })
         .then((messages) => {
             messages[0].message.push(msg.message)
             messages[0].save()
-            global.tesio.emit('recieving message', msg.message.text)
+            global.io.emit('recieving message', msg.message.text)
         })
-        .catch(err => global.tesio.emit('recieving message', 'err'))
-
-
-    // .create({ text: msg.message })
-    // .then(io.emit('recieving message', msg.message))
-    // .catch(err => io.emit('recieving message', "error"))
+        .catch(err => global.io.emit('recieving message', 'err'))
 }
 
 

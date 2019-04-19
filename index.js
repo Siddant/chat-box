@@ -24,15 +24,8 @@ const server = app.listen(process.env.PORT || 4000, () => console.log(`express i
 
 const io = require('socket.io')(server)
 
-
-global.tesio = io
+global.io = io
 
 io.on('connection', socketRoutes.respond)
-// io.on('connection', function (socket) {
-//     socket.on('chat message', function (msg) {
-//         console.log('message: ' + msg);
-//         io.emit('chat message', msg.message)
 
-//     });
-// });
 module.exports = app
