@@ -1,0 +1,36 @@
+@import "~bulma/bulma";
+
+
+.Messaging{
+    .column{
+        height: auto;
+        .inbox{
+            height: 70vh;
+            overflow: scroll;
+            background: white;
+
+        }
+        &:first-child {
+            background: red;
+        }
+        &:last-child {
+            background: blue;
+            .form{
+                margin-top: 20px;
+            }
+            .control{
+                &:first-child {
+                    width: 100%;
+                }
+
+            }
+        }
+        .inbox-users, .message{
+            background: green;
+            height: 70px;
+            width: 100%;
+            margin-bottom: 3px;
+        }
+    }
+
+}

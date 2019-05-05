@@ -19,7 +19,7 @@ app.use('/api', routes)
 app.use('/*', (req, res) => res.sendFile(`${__dirname}/public/index.html`))
 
 
-const server = app.listen(process.env.PORT || 4000, () => console.log(`express is running on port ${process.env.PORT || 4000}`))
+const server = app.listen(process.env.PORT || 2000, () => console.log(`express is running on port ${process.env.PORT || 2000}`))
 
 
 const io = require('socket.io')(server)
