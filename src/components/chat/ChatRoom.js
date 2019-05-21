@@ -36,7 +36,14 @@ class ChatRoom extends React.Component {
     handleSumbit(e) {
         e.preventDefault()
         // global.socket.emit('chat message', 'sending')
-        this.socket.emit('chat message', 'sending')
+        this.socket.emit('chat message', {
+            user: ["5cb5174249414f4e9dec2709", '5cba455b1eb2afd7687319b1'],
+            showId: '5cba455b1eb2afd7687319b1',
+            message: {
+                user: '5cba455b1eb2afd7687319b1',
+                text: 'hello'
+            }
+        })
     }
 
     // componentDidMount() {

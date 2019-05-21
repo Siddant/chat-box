@@ -6,6 +6,7 @@
   "author": "Siddant <siddantgurung@hotmail.co.uk>",
   "license": "MIT",
   "scripts": {
+    "build": "webpack -p",
     "start": "node index",
     "react": "webpack-dev-server"
   },

@@ -1,4 +1,5 @@
 require('dotenv').config()
+const PORT = process.env.PORT || 4000
 
 const express = require('express')
 const app = express()
@@ -16,10 +17,11 @@ app.use(bodyParser.json())
 
 app.use('/api', routes)
 
-app.use('/*', (req, res) => res.sendFile(`${__dirname}/public/index.html`))
+// app.use('/*', (req, res) => res.sendFile(`${__dirname}/dist/index.html`))
+app.use(express.static(`${__dirname}/public`))
 
 
-const server = app.listen(process.env.PORT || 2000, () => console.log(`express is running on port ${process.env.PORT || 2000}`))
+const server = app.listen(PORT, () => console.log(`express is running on port ${PORT}`))
 
 
 const io = require('socket.io')(server)
