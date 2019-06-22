@@ -2,7 +2,7 @@ import React from 'react'
 import Message from './Message'
 // const messages = [1]
 // import io from 'socket.io-client'
-// const socket = require('socket.io-client')(`http://localhost:4000`);
+const socket = require('socket.io-client')(`http://localhost:4000`);
 import io from "socket.io-client";
 
 class ChatRoom extends React.Component {
@@ -14,7 +14,7 @@ class ChatRoom extends React.Component {
         this.handleSumbit = this.handleSumbit.bind(this)
         // this.socket = io('http://localhost:4000')
 
-        this.socket = io('localhost:2000');
+        this.socket = io('localhost:4000');
 
         // this.socket.on('RECEIVE_MESSAGE', function (data) {
         //     addMessage(data);

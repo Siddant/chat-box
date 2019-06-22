@@ -24,10 +24,15 @@ app.use(express.static(`${__dirname}/public`))
 const server = app.listen(PORT, () => console.log(`express is running on port ${PORT}`))
 
 
+// const io = require('socket.io')(server)
+
+// global.io = io
+
 const io = require('socket.io')(server)
-
-global.io = io
-
-io.on('connection', socketRoutes.respond)
+io.on('connection', function (socket) {
+    // socket.on('chat message', async (msg) => {
+    //     io.emit('RECEIVE_MESSAGE', { ...await graphQLWebSocketResolver.updateChatroom(msg) })
+    // })
+})
 
 module.exports = app

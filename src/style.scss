@@ -1,34 +1,378 @@
+@charset "utf-8";
 
-.Messaging{
-    .column{
-        height: auto;
-        .inbox{
-            height: 70vh;
-            overflow: scroll;
-            background: white;
+// Import a Google Font
+// @import url('https://fonts.googleapis.com/css?family=Nunito:400,700%27);
+// @import 'https://fonts.googleapis.com/css?family=Muli:400, 700%27';
+// @import 'https://fonts.googleapis.com/css?family=Muli:400, 700';
 
-        }
-        &:first-child {
-            background: red;
-        }
-        &:last-child {
-            background: blue;
-            .form{
-                margin-top: 20px;
-            }
-            .control{
-                &:first-child {
-                    width: 100%;
-                }
+//change colors
+$secondary: #282c34;
+$primary: #61dafb;
+$link: $primary;
+$grey: #dbd9d6;
+$label-color: $grey;
+// form customization
+$input-background-color: transparent;
+$input-border-color: none;
+$input-shadow: $primary;
+$input-color: $primary;
+$input-hover-border-color: $primary;
+$input-focus-border-color: $primary;
+$input-focus-box-shadow-size: 0;
+// navbar customization
+$navbar-item-color: $primary;
+$navbar-item-hover-background-color: none;
+$pagination-color: $primary;
+// tabs customization
+$tabs-boxed-link-active-background-color: none;
+$tabs-boxed-link-active-border-color: none;
+$tabs-link-active-color: white;
+$tabs-link-color: $primary;
+$tabs-boxed-link-hover-background-color: none;
+$tabs-link-hover-color: $primary;
+$tabs-border-bottom-color: $primary;
+@import "~bulma/bulma";
 
-            }
-        }
-        .inbox-users, .message{
-            background: green;
-            height: 70px;
-            width: 100%;
-            margin-bottom: 3px;
-        }
-    }
+* {
+	scroll-behavior: smooth;
+	box-sizing: border-box;
+	font-family: 'Muli', sans-serif;
+}
 
+body {
+	padding-bottom: 40px;
+	background-color: $grey;
+	margin: 0;
+	min-height: 100vh;
+	// login and register forms
+	.form-section {
+		margin-top: 50px;
+		height: 105vh;
+		background-color: $secondary;
+		.form {
+			i {
+				color: $primary;
+			}
+			.field {
+				padding-bottom: 20px;
+			}
+			$button-background-color: $primary;
+			margin: auto;
+			width: 95%;
+			label {
+				color: $primary;
+			}
+			.input {
+				border-bottom: 1px solid $primary;
+			}
+		}
+	}
+
+	//home page
+	.home-hero {
+		background-image: url('https://images.alphacoders.com/942/thumb-1920-942234.jpg');
+		background-size: cover;
+		margin-top: 20px;
+		.is-1 {
+			font-size: 4em;
+		}
+		.is-3 {
+			font-size: 2.5em;
+		}
+		.is-1,
+		.is-3 {
+			color: $grey !important;
+			text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+		}
+	}
+	.is-centered {
+		text-align: center;
+	}
+	.has-margin {
+		margin-top: 30px;
+		height: auto;
+	}
+
+	.news {
+		height: auto;
+		width: auto;
+	}
+
+	.is-set-to-zero {
+		padding: 0;
+		margin: 0;
+	}
+
+	.container-full-screen {
+		min-width: 100%;
+	}
+
+	.is-white {
+		color: #ffffff;
+	}
+
+	.column {
+		&.has-button {
+			padding-top: calc(125% / 2);
+			text-align: center;
+		}
+	}
+
+	.home-media {
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+		.media-left {
+			height: 300px;
+			width: 500px;
+			.img {
+				height: 300px;
+				width: 500px;
+			}
+		}
+		.content {
+			padding: 40px 70px 40px 0;
+		}
+	}
+	// everything navbar
+	.navbar {
+		.navbar-start {
+			.field {
+				max-width: 100px;
+			}
+		}
+		width: 100%;
+		background-color: $secondary;
+		.navbar-item {
+			color: $primary !important;
+		}
+		a {
+			&.navbar-item {
+				color: $primary !important;
+			}
+			&:hover {
+				font-weight: 800;
+				text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+				color: white !important;
+			}
+		}
+		input {
+			border-bottom: 1px solid $primary;
+			&:hover {
+				border: none;
+				border-bottom: 1px solid $primary;
+			}
+		}
+
+		.control {
+			a {
+				border: none;
+				border-bottom: 1px solid $primary;
+			}
+			.input {
+				width: 285px;
+				&.input:focus {
+					outline: none;
+				}
+			}
+		}
+		.field:not(:last-child) {
+			margin-bottom: 0rem;
+		}
+	}
+
+	// everything search page
+	.search-page {
+		padding-top: 70px;
+		padding-bottom: 100px;
+		min-height: 100vh;
+		background-color: $secondary;
+		.search-hero {
+			box-shadow: inset 0px 0px 16px 16px $primary;
+			border-radius: 5px;
+			background-image: url("https://i.imgur.com/63EK4EK.jpg");
+			background-size: cover;
+			.is-1 {
+				color: $white;
+				font-size: 5em;
+				text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+			}
+		}
+		.search-section {
+			input {
+				border: none;
+				border-bottom: 2px solid $primary;
+				font-size: 1.5em !important;
+			}
+		}
+		.search-result {
+			display: flex;
+			border: 1px solid $primary;
+			padding: 6px;
+			.media-left {
+				width: 64px;
+			}
+			strong {
+				font-size: 26px;
+				color: $primary !important;
+			}
+		}
+	}
+	// everything game show page
+	.game-section {
+		padding-top: 70px;
+		background-color: $secondary;
+		.game-show {
+			min-height: 100vh;
+			.game-hero {
+				margin-bottom: 35px;
+				border-radius: 5px;
+				box-shadow: inset 0px 0px 16px 16px $primary;
+				background-image: url("https://i.imgur.com/lj3MVwM.jpg");
+				background-size: cover;
+				.is-1 {
+					color: $white;
+					font-size: 5em;
+					text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+				}
+			}
+			.card {
+				background-color: $secondary;
+				min-height: 330px;
+				width: 250px;
+				.card-content {
+					.button {
+						margin-bottom: 12px;
+					}
+					padding: 0;
+					margin-top: 15px;
+				}
+				&.linkup-card {
+					border: 1px solid $primary;
+					border-radius: 6px;
+					.card-header-title {
+						color: $primary;
+					}
+					margin-top: 36px;
+					color: $primary;
+					.user-interested {
+						display: flex;
+						justify-content: space-between;
+						padding: 2px 8px;
+					}
+				}
+			}
+			.tabs {
+				.is-active {
+					text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+				}
+				.tab-link {
+					&:hover {
+						color: white;
+						text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+					}
+				}
+			}
+			.data-section {
+				.info {
+					padding-bottom: 10px;
+					strong {
+						color: $primary;
+					}
+					color: $primary;
+				}
+				#video-modal {
+					height: 315px !important;
+					width: 560px !important;
+				}
+			}
+		}
+	}
+	// everything for chat room
+	.Messaging {
+		.column {
+			height: auto;
+			.inbox {
+				height: 70vh;
+				overflow: scroll;
+				background: white;
+				scroll-behavior: auto;
+			}
+
+			&:last-child {
+				// background: blue;
+				.form {
+					margin-top: 20px;
+					color: #000;
+					background: blue;
+				}
+				.control {
+					&:first-child {
+						width: 100%;
+					}
+				}
+			}
+			.media {
+				padding-left: 30px;
+				padding-top: 10px;
+				padding-right: 30px;
+				margin-bottom: 10px;
+				border-top: 0;
+				&.inbox-users {
+					padding-left: 10px;
+					padding-right: 10px;
+				}
+				p {
+					&.send {
+						text-align: right;
+					}
+				}
+				.message {
+					-moz-border-radius: 10px;
+					-webkit-border-radius: 10px;
+					border-radius: 10px;
+					p {
+						padding: 10px;
+					}
+
+					height: auto;
+					width: 50%;
+					margin-bottom: 3px;
+					&.send {
+						background: #3c79fc;
+						color: #ffffff;
+						margin-left: auto;
+					}
+				}
+			}
+		}
+	}
+
+
+	//
+	#twitch-embed{
+		height: 700px;
+		width: auto;
+		background-color: red;
+		iframe{
+			height: 100%;
+			width: 100%;
+
+		}
+
+	}
+}
+
+/* Change Autocomplete styles on input*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+	border: none;
+	border-bottom: 1px solid $primary;
+	-webkit-text-fill-color: $primary;
+	background-color: $secondary;
+	transition: background-color 5000s ease-in-out 0s;
 }
